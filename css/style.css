@@ -1424,7 +1424,11 @@ form label {
 
 #fh5co-started {
   position: relative;
+  background-size: cover;
+  background-position: center 70%;
+  background-repeat: no-repeat;
 }
+
 #fh5co-started .overlay {
   position: absolute;
   top: 0;
@@ -1490,13 +1494,6 @@ form label {
 }
 #fh5co-started .fh5co-heading h2 {
   margin-bottom: 0;
-}
-
-#fh5co-started {
-    background-size: cover;
-    background-position: center 70%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 @media screen and (max-width: 768px) {
