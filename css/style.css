@@ -56,7 +56,8 @@ body {
 
 a {
   /* color: #F14E95; */
-  color: #122C4F;
+/*   color: #122C4F; */
+  color: #FFF;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
