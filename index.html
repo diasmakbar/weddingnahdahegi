@@ -339,13 +339,12 @@
 
 	<!-- Hidden Audio -->
 	<audio id="background-music" loop>
-	    <source src="media/background.mp3" type="audio/mpeg">
-	    Your browser does not support the audio element.
+	    <source src="audio/background.mp3" type="audio/mpeg">
 	</audio>
 	
-	<!-- Music Toggle Button with Image -->
-	<div id="music-toggle" class="music-button">
-	    <img src="images/music.png" alt="Music Toggle" id="music-icon" />
+	<!-- Music Toggle Button with Two Icons -->
+	<div id="music-toggle" class="music-button playing">
+	    <img src="images/icon-pause.png" alt="Toggle Music" id="music-icon" />
 	</div>
 	
 	<script>
@@ -536,9 +535,10 @@
 	        const musicIcon = document.getElementById('music-icon');
 	
 	        // Auto-play saat halaman dimuat
-	        music.volume = 0.5; // Sesuaikan volume jika perlu
+	        music.volume = 0.5;
 	        music.play().catch(function (error) {
 	            console.log("Autoplay ditolak oleh browser.");
+	            toggleBtn.classList.remove('playing'); // Default: paused
 	        });
 	
 	        // Toggle play/pause
@@ -546,9 +546,11 @@
 	            if (music.paused) {
 	                music.play();
 	                toggleBtn.classList.add('playing');
+	                musicIcon.src = "images/icon-pause.png";
 	            } else {
 	                music.pause();
 	                toggleBtn.classList.remove('playing');
+	                musicIcon.src = "images/icon-play.png";
 	            }
 	        });
 	    });
