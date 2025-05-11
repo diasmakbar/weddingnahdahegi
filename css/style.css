@@ -1492,6 +1492,13 @@ form label {
   margin-bottom: 0;
 }
 
+#fh5co-started {
+    background-size: cover;
+    background-position: center 70%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 @media screen and (max-width: 768px) {
   #fh5co-footer .copyright .pull-left,
   #fh5co-footer .copyright .pull-right {
