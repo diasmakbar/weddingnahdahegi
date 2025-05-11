@@ -282,8 +282,8 @@
 									<label for="attendingYes" class="form-text">Yes, I will be there!</label>
 								</div>
 								<div class="col-xs-12 col-md-6">
-									<input type="radio" id="attendingNo" name="entry.164254037" value="Just sending my best wishes!" onclick="hideAttendanceNumber()">
-									<label for="attendingNo" class="form-text">Just sending my best wishes!</label>
+									<input type="radio" id="attendingNo" name="entry.164254037" value="No, but I'm sending my best wishes for your wedding!" onclick="hideAttendanceNumber()">
+									<label for="attendingNo" class="form-text">No, but I'm sending my best wishes for your wedding!</label>
 								</div>
 							</div>
 						</div>
@@ -398,109 +398,87 @@
 
 	$(document).ready(function () {
 		$('#submit').on('click', function() {
+
 			event.preventDefault();
+
 			$('#loading').show();
 
 			var name = $('#name').val() || 'no set';
+
+			// var attending = function() {
+			// 	var v;
+			// 	$('[name="entry.164254037"]').each(function() {
+			// 	if($(this).prop('checked') === true) v = $(this).val();
+			// 	});
+			// 	return v;
+			// };
+
+			// var numberOfPeople = function() {
+			// 	var v;
+			// 	$('[name="entry.678699127"]').each(function() {
+			// 	if($(this).prop('checked') === true) v = $(this).val();
+			// 	});
+			// 	return v;
+			// };
 
 			var attending = function() {
 				var v;
 				$('[name="entry.164254037"]').each(function() {
 					if ($(this).prop('checked')) v = $(this).val();
 				});
-				return v;
+				return v || '';
 			};
 
 			var numberOfPeople = function() {
 				var v = '';
 				$('[name="entry.678699127"]').each(function() {
-					if ($(this).prop('checked')) v = $(this).val();
+					if ($(this).prop('checked')) {
+						v = $(this).val();
+					}
 				});
-				return v || 'Not attending';
+				return v || ''; // 👈 pastikan string kosong dikirim
 			};
 
 			var wishes = $('#wishes').val() || 'no set';
 
+			// var data = {
+			// 'entry.1717783849': name,
+			// 'entry.164254037': attending(),
+			// 'entry.678699127': numberOfPeople(),
+			// 'entry.539757192': wishes
+			// };
+
 			var data = {
-				'entry.1717783849': name,
-				'entry.164254037': attending(),
-				'entry.678699127': numberOfPeople(),
-				'entry.539757192': wishes
+				'entry.1717783849': name || '',
+				'entry.164254037': attending() || '',
+				'entry.678699127': numberOfPeople() || '',
+				'entry.539757192': wishes || ''
 			};
 
 			$.ajax({
 				type: 'POST',
-				url: 'https://docs.google.com/forms/u/2/d/e/1FAIpQLSe5EcGgOZPylrUbL__xdc5Aa3fWMZYST3jOMiPsasCdg0n16w/formResponse ',
+				url: 'https://docs.google.com/forms/u/2/d/e/1FAIpQLSe5EcGgOZPylrUbL__xdc5Aa3fWMZYST3jOMiPsasCdg0n16w/formResponse',
 				data: data,
+				// contentType: 'application/json',
+				// dataType: 'jsonp',
 				contentType: 'application/x-www-form-urlencoded',
 				dataType: 'jsonp',
-				success: function () {
-					alert('Thank you for your response!');
-				},
-				error: function (err) {
-					alert('There was an error submitting your response.');
+				xhrFields: {
+					withCredentials: false
 				},
 				complete: function() {
-					$('#loading').hide();
-					$('#name').val('');
-					$('[name="entry.164254037"]').prop('checked', false);
-					$('[name="entry.678699127"]').prop('checked', false);
-					$('#wishes').val('');
+				$('#loading').hide();
+
+				alert('Waiting for you!');
+				
+				$('#name').val('');
+				$('[name="entry.164254037"]').prop('checked', false);
+				$('[name="entry.678699127"]').prop('checked', false);
+				$('#wishes').val('');
+				
 				}
 			});
 		});
-		// $('#submit').on('click', function() {
-
-		// 	event.preventDefault();
-
-		// 	$('#loading').show();
-
-		// 	var name = $('#name').val() || 'no set';
-
-		// 	var attending = function() {
-		// 		var v;
-		// 		$('[name="entry.164254037"]').each(function() {
-		// 		if($(this).prop('checked') === true) v = $(this).val();
-		// 		});
-		// 		return v;
-		// 	};
-
-		// 	var numberOfPeople = function() {
-		// 		var v;
-		// 		$('[name="entry.678699127"]').each(function() {
-		// 		if($(this).prop('checked') === true) v = $(this).val();
-		// 		});
-		// 		return v;
-		// 	};
-
-		// 	var wishes = $('#wishes').val() || 'no set';
-
-		// 	var data = {
-		// 	'entry.1717783849': name,
-		// 	'entry.164254037': attending(),
-		// 	'entry.678699127': numberOfPeople(),
-		// 	'entry.539757192': wishes
-		// 	};
-
-		// 	$.ajax({
-		// 		type: 'POST',
-		// 		url: 'https://docs.google.com/forms/u/2/d/e/1FAIpQLSe5EcGgOZPylrUbL__xdc5Aa3fWMZYST3jOMiPsasCdg0n16w/formResponse',
-		// 		data: data,
-		// 		contentType: 'application/json',
-		// 		dataType: 'jsonp',
-		// 		complete: function() {
-		// 		$('#loading').hide();
-
-		// 		alert('Waiting for you!');
-				
-		// 		$('#name').val('');
-		// 		$('[name="entry.164254037"]').prop('checked', false);
-		// 		$('[name="entry.678699127"]').prop('checked', false);
-		// 		$('#wishes').val('');
-				
-		// 		}
-		// 	});
-		// });
 
 		var lastImageIndexS = 0;
 		var totalImagesS = 25;
