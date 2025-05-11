@@ -535,9 +535,10 @@
 	        const toggleBtn = document.getElementById('music-toggle');
 	        const musicIcon = document.getElementById('music-icon');
 	
-	        // Coba auto-play saat halaman dimuat
+	        // Auto-play saat halaman dimuat
+	        music.volume = 0.5; // Sesuaikan volume jika perlu
 	        music.play().catch(function (error) {
-	            console.log("Autoplay tidak diizinkan, harus klik dulu.");
+	            console.log("Autoplay ditolak oleh browser.");
 	        });
 	
 	        // Toggle play/pause
