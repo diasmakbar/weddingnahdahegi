@@ -379,19 +379,26 @@
 		hour: eventDate.getHours()
 	});
 
+	// function showAttendanceNumber() {
+	// 	document.getElementById("attendanceNumber").style.display = "block";
+	// }
+
+	// function hideAttendanceNumber() {
+	// 	document.getElementById("attendanceNumber").style.display = "none";
+	// }
+
 	function showAttendanceNumber() {
 		document.getElementById("attendanceNumber").style.display = "block";
 	}
 
 	function hideAttendanceNumber() {
 		document.getElementById("attendanceNumber").style.display = "none";
+		$('[name="entry.678699127"]').prop('checked', false);
 	}
 
 	$(document).ready(function () {
 		$('#submit').on('click', function() {
-
 			event.preventDefault();
-
 			$('#loading').show();
 
 			var name = $('#name').val() || 'no set';
@@ -399,47 +406,101 @@
 			var attending = function() {
 				var v;
 				$('[name="entry.164254037"]').each(function() {
-				if($(this).prop('checked') === true) v = $(this).val();
+					if ($(this).prop('checked')) v = $(this).val();
 				});
 				return v;
 			};
 
 			var numberOfPeople = function() {
-				var v;
+				var v = '';
 				$('[name="entry.678699127"]').each(function() {
-				if($(this).prop('checked') === true) v = $(this).val();
+					if ($(this).prop('checked')) v = $(this).val();
 				});
-				return v;
+				return v || 'Not attending';
 			};
 
 			var wishes = $('#wishes').val() || 'no set';
 
 			var data = {
-			'entry.1717783849': name,
-			'entry.164254037': attending(),
-			'entry.678699127': numberOfPeople(),
-			'entry.539757192': wishes
+				'entry.1717783849': name,
+				'entry.164254037': attending(),
+				'entry.678699127': numberOfPeople(),
+				'entry.539757192': wishes
 			};
 
 			$.ajax({
 				type: 'POST',
-				url: 'https://docs.google.com/forms/u/2/d/e/1FAIpQLSe5EcGgOZPylrUbL__xdc5Aa3fWMZYST3jOMiPsasCdg0n16w/formResponse',
+				url: 'https://docs.google.com/forms/u/2/d/e/1FAIpQLSe5EcGgOZPylrUbL__xdc5Aa3fWMZYST3jOMiPsasCdg0n16w/formResponse ',
 				data: data,
-				contentType: 'application/json',
+				contentType: 'application/x-www-form-urlencoded',
 				dataType: 'jsonp',
+				success: function () {
+					alert('Thank you for your response!');
+				},
+				error: function (err) {
+					alert('There was an error submitting your response.');
+				},
 				complete: function() {
-				$('#loading').hide();
-
-				alert('Waiting for you!');
-				
-				$('#name').val('');
-				$('[name="entry.164254037"]').prop('checked', false);
-				$('[name="entry.678699127"]').prop('checked', false);
-				$('#wishes').val('');
-				
+					$('#loading').hide();
+					$('#name').val('');
+					$('[name="entry.164254037"]').prop('checked', false);
+					$('[name="entry.678699127"]').prop('checked', false);
+					$('#wishes').val('');
 				}
 			});
 		});
+		// $('#submit').on('click', function() {
+
+		// 	event.preventDefault();
+
+		// 	$('#loading').show();
+
+		// 	var name = $('#name').val() || 'no set';
+
+		// 	var attending = function() {
+		// 		var v;
+		// 		$('[name="entry.164254037"]').each(function() {
+		// 		if($(this).prop('checked') === true) v = $(this).val();
+		// 		});
+		// 		return v;
+		// 	};
+
+		// 	var numberOfPeople = function() {
+		// 		var v;
+		// 		$('[name="entry.678699127"]').each(function() {
+		// 		if($(this).prop('checked') === true) v = $(this).val();
+		// 		});
+		// 		return v;
+		// 	};
+
+		// 	var wishes = $('#wishes').val() || 'no set';
+
+		// 	var data = {
+		// 	'entry.1717783849': name,
+		// 	'entry.164254037': attending(),
+		// 	'entry.678699127': numberOfPeople(),
+		// 	'entry.539757192': wishes
+		// 	};
+
+		// 	$.ajax({
+		// 		type: 'POST',
+		// 		url: 'https://docs.google.com/forms/u/2/d/e/1FAIpQLSe5EcGgOZPylrUbL__xdc5Aa3fWMZYST3jOMiPsasCdg0n16w/formResponse',
+		// 		data: data,
+		// 		contentType: 'application/json',
+		// 		dataType: 'jsonp',
+		// 		complete: function() {
+		// 		$('#loading').hide();
+
+		// 		alert('Waiting for you!');
+				
+		// 		$('#name').val('');
+		// 		$('[name="entry.164254037"]').prop('checked', false);
+		// 		$('[name="entry.678699127"]').prop('checked', false);
+		// 		$('#wishes').val('');
+				
+		// 		}
+		// 	});
+		// });
 
 		var lastImageIndexS = 0;
 		var totalImagesS = 25;
