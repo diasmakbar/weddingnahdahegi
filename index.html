@@ -336,21 +336,32 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
+
+	<!-- Hidden Audio -->
+	<audio id="background-music" loop>
+	    <source src="audio/background.mp3" type="audio/mpeg">
+	    Your browser does not support the audio element.
+	</audio>
+	
+	<!-- Music Toggle Button with Image -->
+	<div id="music-toggle" class="music-button">
+	    <img src="images/music.jpg" alt="Music Toggle" id="music-icon" />
+	</div>
 	
 	<script>
 		window.onload = function() {
 			var header = document.getElementById('fh5co-header');
 			if (window.innerWidth <= 768) {
-				header.style.backgroundImage = 'url(images/cover_atas_mob.jpg)';
+				header.style.backgroundImage = 'url(images/wedevnew.jpg)';
 			} else {
-				header.style.backgroundImage = 'url(images/cover_atas_new.jpg)';
+				header.style.backgroundImage = 'url(images/wedev.jpg)';
 			}
 		
 			var event = document.getElementById('fh5co-event');
 			if (window.innerWidth <= 768) {
-				event.style.backgroundImage = 'url(images/wedev-mob.jpg)';
+				event.style.backgroundImage = 'url(images/cover_atas_mob.jpg)';
 			} else {
-				event.style.backgroundImage = 'url(images/wedev.jpg)';
+				event.style.backgroundImage = 'url(images/cover_atas_new.jpg)';
 			}
 		
 			var started = document.getElementById('fh5co-started');
@@ -518,6 +529,28 @@
 		});
 
 	});
+
+	    document.addEventListener('DOMContentLoaded', function () {
+	        const music = document.getElementById('background-music');
+	        const toggleBtn = document.getElementById('music-toggle');
+	        const musicIcon = document.getElementById('music-icon');
+	
+	        // Coba auto-play saat halaman dimuat
+	        music.play().catch(function (error) {
+	            console.log("Autoplay tidak diizinkan, harus klik dulu.");
+	        });
+	
+	        // Toggle play/pause
+	        toggleBtn.addEventListener('click', function () {
+	            if (music.paused) {
+	                music.play();
+	                toggleBtn.classList.add('playing');
+	            } else {
+	                music.pause();
+	                toggleBtn.classList.remove('playing');
+	            }
+	        });
+	    });
 	</script>
 	</body>
 </html>
