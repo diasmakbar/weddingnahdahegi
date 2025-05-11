@@ -1971,7 +1971,7 @@ form label {
 .music-button {
     position: fixed;
     bottom: 20px;
-    left: 20px;
+    left: 20px; /* Pindah ke kiri */
     z-index: 9999;
     width: 60px;
     height: 60px;
@@ -1982,24 +1982,10 @@ form label {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
 }
 
 .music-button img {
     width: 50px;
     height: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    transition: transform 1s linear;
-}
-
-.music-button.playing img {
-    animation: spin 3s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    object-fit: contain;
 }
