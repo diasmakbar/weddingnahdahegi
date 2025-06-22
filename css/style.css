@@ -446,6 +446,13 @@ h1, h2, h3, h4, h5, h6, figure {
     height: inherit;
   }
 }
+
+@media screen and (max-width: 768px) {
+    #fh5co-event {
+        background-position: center 30% !important;
+    }
+}
+
 #fh5co-counter .event-wrap,
 #fh5co-event .event-wrap {
 /*   border: 2px solid rgba(255, 255, 255, 0.5); */
