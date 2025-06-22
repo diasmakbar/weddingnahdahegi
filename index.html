@@ -233,7 +233,7 @@
 									<span class="date">2018</span>
 								</div>
 								<div class="timeline-body">
-									<p>Time passed, life moved on—but then, unexpectedly, their paths crossed again. This time, it was his heart that opened first. After so many years apart, they reconnected, and something finally clicked. Conversations flowed effortlessly, laughter came easily, and shared passions—movies, music, and even the thrill of discovering new foods—drew them closer than ever before.</p>
+									<p>Time passed, life moved on—but then, unexpectedly, their paths crossed again. This time, it was his heart that opened first. After so many years apart, they reconnected. Conversations flowed effortlessly, laughter came easily, and shared passions—movies, music, and even the thrill of discovering new foods—drew them closer than ever before.</p>
 								</div>
 							</div>
 						</li>
@@ -506,7 +506,9 @@
 			for (var i = lastImageIndexS + 1; i <= Math.min(lastImageIndexS + numImages, totalImagesS); i++) {
 				var imgElement = document.createElement("a");
 				imgElement.href = "images/gallery/s" + i + ".jpeg";
-				imgElement.className = "swipeboxImg";
+				imgElement.className = "swipeboxExampleImg";
+				// imgElement.className = "swipeboxImg";
+				imgElement.setAttribute('rel', 'gallery');
 				var img = document.createElement("img");
 				img.src = "images/gallery/s" + i + ".jpeg";
 				img.loading = "lazy";
@@ -530,7 +532,8 @@
 				lastRow: 'center',
 				rel : 'gallery1',
 			}).on('jg.complete', function () {
-				$('.swipeboxImg').swipebox();
+				// $('.swipeboxImg').swipebox();
+				$('.swipeboxExampleImg').swipebox();
 			});
 		});
 
