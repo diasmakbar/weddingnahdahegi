@@ -494,9 +494,16 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-counter .event-wrap .event-col,
 #fh5co-event .event-wrap .event-col {
-  width: 50%;
+/*   width: 50%; */
+  width: calc(50% - 20px);
+  gap: 20px;
   float: left;
   margin-bottom: 30px;
+}
+
+#fh5co-counter .event-wrap .event-col:nth-child(even),
+#fh5co-event .event-wrap .event-col:nth-child(even) {
+    clear: both;
 }
 
 #fh5co-counter {
