@@ -351,9 +351,9 @@
 		window.onload = function() {
 			var header = document.getElementById('fh5co-header');
 			if (window.innerWidth <= 768) {
-				header.style.backgroundImage = 'url(images/wedev.jpeg)';
+				header.style.backgroundImage = 'url(images/wedev-fl-edit.jpeg)';
 			} else {
-				header.style.backgroundImage = 'url(images/wedevnew.jpg)';
+				header.style.backgroundImage = 'url(images/wedev-fl-edit.jpg)';
 			}
 		
 			var event = document.getElementById('fh5co-event');
@@ -365,7 +365,7 @@
 		
 			var started = document.getElementById('fh5co-started');
 			if (window.innerWidth <= 768) {
-				started.style.backgroundImage = 'url(images/will.jpeg)';
+				started.style.backgroundImage = 'url(images/wedev.jpeg)';
 			} else {
 				started.style.backgroundImage = 'url(images/will-mob.jpeg)';
 			}
@@ -446,7 +446,7 @@
 						v = $(this).val();
 					}
 				});
-				return v || ''; // 👈 pastikan string kosong dikirim
+				return v || '';
 			};
 
 			var wishes = $('#wishes').val() || 'no set';
@@ -538,7 +538,7 @@
 	        music.volume = 0.5;
 	        music.play().catch(function (error) {
 	            console.log("Autoplay ditolak oleh browser.");
-	            toggleBtn.classList.remove('playing'); // Default: paused
+	            toggleBtn.classList.remove('playing');
 	        });
 	
 	        // Toggle play/pause
