@@ -1991,7 +1991,7 @@ form label {
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: url(../images/loadernew.gif) center no-repeat #fff;
+  background: url(../images/loader-black.gif) center no-repeat #fff;
 }
 
 .js .animate-box {
