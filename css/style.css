@@ -283,7 +283,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 /* Tambah overlay hitam transparan */
-#fh5co-event.fh5co-bg::after {
+/* #fh5co-event.fh5co-bg::after {
     content: "";
     position: absolute;
     top: 0; left: 0;
@@ -291,7 +291,7 @@ h1, h2, h3, h4, h5, h6, figure {
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 0;
     pointer-events: none;
-}
+} */
 
 .fh5co-video {
   height: 450px;
