@@ -498,10 +498,10 @@
 
 			for (var i = lastImageIndexS + 1; i <= Math.min(lastImageIndexS + numImages, totalImagesS); i++) {
 				var imgElement = document.createElement("a");
-				imgElement.href = "images/s" + i + ".jpg";
+				imgElement.href = "images/gallery/s" + i + ".jpg";
 				imgElement.className = "swipeboxImg";
 				var img = document.createElement("img");
-				img.src = "images/s" + i + ".jpg";
+				img.src = "images/gallery/s" + i + ".jpg";
 				img.loading = "lazy";
 				imgElement.appendChild(img);
 				galeri.appendChild(imgElement);
