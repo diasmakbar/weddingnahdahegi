@@ -156,13 +156,18 @@
 							
 							<div class="event-col">
 								<i class="icon-clock"></i>
-								<span>08:00 AM - 09:30 AM</span>
-								<span>(Wedding Vows/Akad Nikah)</span>
+								<span>08:00 AM - </span>
+								<span>09:30 AM</span>
+								<span>(Akad Nikah)</span>
 								<br>
-								<span>10:00 AM - 11:30 AM</span>
+								<span>10:00 AM - </span>
+								<span>11:30 AM</span>
 								<span>(Reception)</span>
 							</div>
-			
+
+							<div class="event-col">
+							</div>
+							
 							<div class="event-col">
 								<i class="icon-calendar"></i>
 								<span>Saturday, 9 August 2025</span>
@@ -536,10 +541,20 @@
 	
 	        // Auto-play saat halaman dimuat
 	        music.volume = 0.5;
-	        music.play().catch(function (error) {
-	            console.log("Autoplay ditolak oleh browser.");
-	            toggleBtn.classList.remove('playing');
+	        music.muted = true;
+	        music.play().then(() => {
+		    music.muted = false;
+		    toggleBtn.classList.add('playing');
+		    musicIcon.src = "images/icon-pause.png";
+	        }).catch(function (error) {
+		    console.log("Autoplay ditolak oleh browser.");
+		    toggleBtn.classList.remove('playing');
+		    musicIcon.src = "images/icon-play.png";
 	        });
+	        // music.play().catch(function (error) {
+	        //     console.log("Autoplay ditolak oleh browser.");
+	        //     toggleBtn.classList.remove('playing');
+	        // });
 	
 	        // Toggle play/pause
 	        toggleBtn.addEventListener('click', function () {
